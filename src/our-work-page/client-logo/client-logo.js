@@ -49,6 +49,10 @@ const ClientLogo = () => {
   return (
     <React.Fragment key={uniqid()}>
       <Container>
+        
+<hr style={{borderTop: "2px solid red",
+  width:"10%"}}/>
+        <h1 style={{ textAlign: "center" }}>Our Clients</h1>
         <div className={styles["image-flex"]}>{clientLogoDetails}</div>
       </Container>
     </React.Fragment>

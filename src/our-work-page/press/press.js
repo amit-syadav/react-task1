@@ -79,6 +79,8 @@ const Press = () => {
           return (
             <React.Fragment key={uniqid()}>
               <div key={uniqid}>
+                <hr style={{borderTop: "2px solid red",
+  width:"10%"}}/>
                 <h1 style={{ textAlign: "center" }}>Press</h1>
               </div>{" "}
             </React.Fragment>

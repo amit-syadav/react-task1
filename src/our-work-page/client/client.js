@@ -79,6 +79,8 @@ const Client = () => {
           return (
             <React.Fragment key={uniqid()}>
               <div className={styles["title-text"]}>
+                <hr style={{borderTop: "2px solid red",
+  width:"10%"}}/>
                 <h1 className={styles["heading-style"]}>
                   {item.entry.heading}
                 </h1>
