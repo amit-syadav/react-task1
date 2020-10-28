@@ -7,7 +7,10 @@ import uniqid from "uniqid";
 const FooterMain = () => {
   // code to fetch content from content stack API
   const [footerItems, setFooterItems] = useState([]);
-  const headers = {
+  
+
+  useEffect(() => {
+    const headers = {
     api_key: process.env.REACT_APP_API_KEY,
     access_token: process.env.REACT_APP_ACCESS_TOKEN,
   };
@@ -20,8 +23,6 @@ const FooterMain = () => {
     setFooterItems([data]);
     //  ("fetched footer items", footerItems);
   };
-
-  useEffect(() => {
     getFooterItems();
   }, []);
    //(footerItems);
@@ -41,7 +42,7 @@ const FooterMain = () => {
                 <button
                   key={uniqid()}
                   className={
-                    styles["my-button"] + " " + "btn btn-primary mx-auto"
+                    styles["my-button"] + " btn btn-primary mx-auto"
                   }
                 >
                   {item.entry.button_message}
@@ -70,7 +71,7 @@ const FooterMain = () => {
               <React.Fragment key={uniqid()}>
                 <div
                   key={uniqid()}
-                  className={styles["social"] + " " + "mr-auto"}
+                  className={styles["social"] + " mr-auto"}
                 >
                   <li key={uniqid()}>
                     <a

@@ -6,7 +6,10 @@ import uniqid from "uniqid";
 const NavbarMain = () => {
   // code to fetch content from content stack API
   const [navItems, setNavItems] = useState([]);
-  const headers = {
+  
+
+  useEffect(() => {
+    const headers = {
     api_key: process.env.REACT_APP_API_KEY,
     access_token: process.env.REACT_APP_ACCESS_TOKEN,
   };
@@ -17,18 +20,14 @@ const NavbarMain = () => {
     );
     const data = await response.json();
     setNavItems([data]);
-     //("fetched NAVBAR items", navItems);
   };
-
-  useEffect(() => {
     getNavItems();
   }, []);
-   //(navItems);
 
   /*  seperating link and title from api return */
 
   const linkAndTitle = [];
-  navItems.map((item) => {
+  navItems.forEach((item) => {
     let navLinkObject = item.entry.group;
     for (let key in navLinkObject) {
       linkAndTitle.push(

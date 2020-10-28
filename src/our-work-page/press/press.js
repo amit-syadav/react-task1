@@ -11,7 +11,10 @@ import uniqid from "uniqid";
 const Press = () => {
   // code to fetch content from content stack API
   const [pressItems, setPressItems] = useState([]);
-  const headers = {
+  
+
+  useEffect(() => {
+    const headers = {
     api_key: process.env.REACT_APP_API_KEY,
     access_token: process.env.REACT_APP_ACCESS_TOKEN,
   };
@@ -22,16 +25,13 @@ const Press = () => {
     );
     const data = await response.json();
     setPressItems([data]);
-    //  //("Banner item", bannerItems);
   };
-
-  useEffect(() => {
     getPressItems();
   }, []);
    //("fetched Client items", pressItems);
 
   const pressDetails = [];
-  pressItems.map((item) => {
+  pressItems.forEach((item) => {
     let pressObject = item.entry.press;
     for (let key in pressObject) {
       var heading = pressObject[key]["heading"];
@@ -49,7 +49,7 @@ const Press = () => {
           <Card.Img
             variant="top"
             src={imageUrl}
-            className={styles["image-resize"] + " " + "img-thumbnail"}
+            className={styles["image-resize"] + " img-thumbnail"}
           />
           <Card.Body
             style={{ width: "28rem" }}

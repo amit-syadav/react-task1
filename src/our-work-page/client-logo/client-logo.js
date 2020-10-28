@@ -8,7 +8,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const ClientLogo = () => {
   // code to fetch content from content stack API
   const [clientLogoItems, setClientLogoItems] = useState([]);
-  const headers = {
+  
+
+  useEffect(() => {
+    const headers = {
     api_key: process.env.REACT_APP_API_KEY,
     access_token: process.env.REACT_APP_ACCESS_TOKEN,
   };
@@ -21,14 +24,12 @@ const ClientLogo = () => {
     setClientLogoItems([data]);
     //  //("Banner item", bannerItems);
   };
-
-  useEffect(() => {
     getClientLogoItems();
   }, []);
    //("fetched Client LoGo items", clientLogoItems);
 
   const clientLogoDetails = [];
-  clientLogoItems.map((item) => {
+  clientLogoItems.forEach((item) => {
     let clientLogoObject = item.entry.clients_images;
     for (let key in clientLogoObject) {
       if (clientLogoObject[key] !== null) {

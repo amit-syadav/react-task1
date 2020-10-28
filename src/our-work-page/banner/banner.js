@@ -5,7 +5,10 @@ import uniqid from "uniqid";
 const Banner = () => {
   // code to fetch content from content stack API
   const [bannerItems, setBannerItems] = useState([]);
-  const headers = {
+  
+
+  useEffect(() => {
+    const headers = {
     api_key: process.env.REACT_APP_API_KEY,
     access_token: process.env.REACT_APP_ACCESS_TOKEN,
   };
@@ -18,15 +21,13 @@ const Banner = () => {
     setBannerItems([data]);
     //  //("Banner item", bannerItems);
   };
-
-  useEffect(() => {
     getBannerItems();
   }, []);
    //("fetched BANNER items", bannerItems);
 
   return (
     <React.Fragment key={uniqid()}>
-      {bannerItems.map((item) => {
+      {bannerItems.forEach((item) => {
         const image_url = item.entry.banner.background.url;
         const heading = item.entry.banner.heading;
         return (

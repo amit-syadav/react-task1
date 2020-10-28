@@ -9,27 +9,25 @@ import uniqid from "uniqid";
 const Client = () => {
   // code to fetch content from content stack API
   const [clientItems, setClientItems] = useState([]);
-  const headers = {
-    api_key: process.env.REACT_APP_API_KEY,
-    access_token: process.env.REACT_APP_ACCESS_TOKEN,
-  };
-  const getClientItems = async () => {
-    const response = await fetch(
-      "https://cdn.contentstack.io/v3/content_types/our_work/entries/blt8b2d863f8e902609?environment=development",
-      { headers }
-    );
-    const data = await response.json();
-    setClientItems([data]);
-    //  //("Banner item", bannerItems);
-  };
 
   useEffect(() => {
+    const headers = {
+      api_key: process.env.REACT_APP_API_KEY,
+      access_token: process.env.REACT_APP_ACCESS_TOKEN,
+    };
+    const getClientItems = async () => {
+      const response = await fetch(
+        "https://cdn.contentstack.io/v3/content_types/our_work/entries/blt8b2d863f8e902609?environment=development",
+        { headers }
+      );
+      const data = await response.json();
+      setClientItems([data]);
+    };
     getClientItems();
   }, []);
-   //("fetched Client items", clientItems);
 
   const clientDetails = [];
-  clientItems.map((item) => {
+  clientItems.forEach((item) => {
     let clientObject = item.entry.clients;
     for (let key in clientObject) {
       var heading = clientObject[key]["heading"];
@@ -50,13 +48,13 @@ const Client = () => {
             </Card.Title>
             <Card.Subtitle
               id="s1"
-              className={styles["card-item--flex"] + " " + "mb-2 text-muted"}
+              className={styles["card-item--flex"] + " mb-2 text-muted"}
             >
               {field1}
             </Card.Subtitle>
             <Card.Subtitle
               id=" s2"
-              className={styles["card-item--flex"] + " " + "mb-2 text-muted"}
+              className={styles["card-item--flex"] + " mb-2 text-muted"}
             >
               {field2}
             </Card.Subtitle>
@@ -71,7 +69,7 @@ const Client = () => {
         </Card>
       );
     }
-     //("links and title array", clientDetails);
+    //("links and title array", clientDetails);
   });
 
   return (

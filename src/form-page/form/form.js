@@ -39,7 +39,7 @@ const Forms = () => {
     email: Joi.string()
       .email({
         minDomainSegments: 2,
-        tlds: { allow: ["com", "net"] },
+        tlds: { allow: ["com", "net", "in"] },
       })
       .required(),
     phone: Joi.string().length(10).required(),
@@ -54,7 +54,7 @@ const Forms = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { error, value } = schema.validate({
+    const  {error, } = schema.validate({
       resume: person.resume,
       firstName: person.firstName,
       lastName: person.lastName,
@@ -62,7 +62,7 @@ const Forms = () => {
       phone: person.phone,
       linkedin: person.linkedin,
     });
-    //  //("error", error.details, "value", value, typeof error);
+    // console.log("error", error, "value", value, typeof error);
 
     if (error === undefined) {
       const newPerson = { ...person, id: uniqid() };
@@ -81,8 +81,8 @@ const Forms = () => {
       });
     } else {
       setShow(true);
-      setErrorMessage(error);
-       //(error);
+      setErrorMessage(error.details[0].message);
+      // console.log("error",error,error.details,error.details[0].message.slice(1,),"value",value);
     }
   };
   return (
@@ -98,7 +98,7 @@ const Forms = () => {
           <form>
             <div className="form-group row">
               <label
-                className={styles["required"] + " " + "col-sm-2 col-form-label"}
+                className={styles["required"] + " col-sm-2 col-form-label"}
                 htmlFor="resume"
               >
                 Resume:{" "}
@@ -115,7 +115,7 @@ const Forms = () => {
             </div>
             <div className="form-group row">
               <label
-                className={styles["required"] + " " + "col-sm-2 col-form-label"}
+                className={styles["required"] + " col-sm-2 col-form-label"}
                 htmlFor="firstName"
               >
                 Firstname :{" "}
@@ -125,7 +125,7 @@ const Forms = () => {
                   className="form-control"
                   type="text"
                   id="firstName"
-                  name="firstName"
+                  name='firstName'
                   value={person.firstName}
                   onChange={handleChange}
                 />
@@ -133,7 +133,7 @@ const Forms = () => {
             </div>
             <div className={"form-group row"}>
               <label
-                className={styles["required"] + " " + "col-sm-2 col-form-label"}
+                className={styles["required"] + " col-sm-2 col-form-label"}
                 htmlFor="lastName"
               >
                 Lastname :{" "}
@@ -151,7 +151,7 @@ const Forms = () => {
             </div>
             <div className={"form-group row row"}>
               <label
-                className={styles["required"] + " " + "col-sm-2 col-form-label"}
+                className={styles["required"] + " col-sm-2 col-form-label"}
                 htmlFor="email"
               >
                 Email :{" "}
@@ -169,7 +169,7 @@ const Forms = () => {
             </div>
             <div className={"form-group row"}>
               <label
-                className={styles["required"] + " " + "col-sm-2 col-form-label"}
+                className={styles["required"] + " col-sm-2 col-form-label"}
                 htmlFor="phone"
               >
                 Phone :{" "}
@@ -193,7 +193,7 @@ const Forms = () => {
             </strong>
             <div className={"form-group row"}>
               <label
-                className={styles["required"] + " " + "col-sm-2 col-form-label"}
+                className={styles["required"] + " col-sm-2 col-form-label"}
                 htmlFor="linkedin"
               >
                 Linkedin :{" "}
@@ -292,7 +292,7 @@ const Forms = () => {
         <article>
           <Alert show={show} variant="danger">
             <Alert.Heading>ERROR!!!</Alert.Heading>
-            <p>{JSON.stringify(errorMessage.details)}</p>
+            <p>{errorMessage}</p>
             <hr />
             <div className="d-flex justify-content-end">
               <Button onClick={() => setShow(false)} variant="outline-success">
