@@ -1,0 +1,26 @@
+.banner-style {
+  max-height: 20%;
+  min-height: 15%;
+  min-width: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: flex;
+}
+
+.heading-style {
+  object-position: center;
+  margin: auto;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .banner-style {
+    max-height: 350px;
+    min-height: 250px;
+    object-fit: cover;
+    object-position: center;
+    display: flex;
+  }
+}

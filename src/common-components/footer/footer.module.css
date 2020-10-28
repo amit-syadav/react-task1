@@ -1,0 +1,57 @@
+.footer {
+  color: white;
+}
+
+div * {
+  text-transform: capitalize;
+}
+
+.message {
+  font-weight: bold;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.social {
+  list-style-type: none;
+  text-align: center;
+}
+.my-button {
+  display: flex;
+  align-self: center;
+  margin: 1em 0 1em 0;
+}
+li {
+  display: inline-block;
+}
+.privacy {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+a {
+  margin-right: 3em;
+}
+.copyright {
+  width: 100%;
+  text-align: center;
+}
+
+@media only screen and(min-width:768) {
+  .privacy {
+    display: inline;
+    float: left;
+    width: auto;
+    color: green;
+    font-size: 3em;
+  }
+  .copyright {
+    display: inline-block;
+    width: auto;
+    text-align: left;
+  }
+  .social {
+    float: right;
+  }
+}

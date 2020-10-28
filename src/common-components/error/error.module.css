@@ -1,0 +1,18 @@
+.all-text {
+  text-align: center;
+  font-size: 1em;
+}
+
+.h1-style-here {
+  color: red;
+  font-weight: bolder;
+  font-size: 5rem;
+}
+@media only screen and (min-width: 768px) {
+  .h1-style-here {
+    font-size: 8rem;
+  }
+  .all-text {
+    font-size: 2em;
+  }
+}

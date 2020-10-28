@@ -1,0 +1,38 @@
+/* MAKING MOBILE FIRST */
+.flex-container {
+  background-color: white;
+  height: auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
+
+.flex-item-heading {
+  font-size: 21px;
+  flex-basis: 100%;
+}
+
+.flex-item-p {
+  padding: 12px;
+}
+@media only screen and (min-width: 768px) {
+  .flex-container {
+    display: flex;
+    height: 150px;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  }
+
+  .flex-item-heading {
+    flex-basis: 100%;
+    align-self: center;
+    margin: auto;
+    text-align: center;
+    font-size: 26px;
+  }
+}
