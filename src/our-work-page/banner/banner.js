@@ -23,11 +23,11 @@ const Banner = () => {
   };
     getBannerItems();
   }, []);
-   //("fetched BANNER items", bannerItems);
+   console.log("fetched BANNER items", bannerItems);
 
   return (
     <React.Fragment key={uniqid()}>
-      {bannerItems.forEach((item) => {
+      {bannerItems.map((item) => {
         const image_url = item.entry.banner.background.url;
         const heading = item.entry.banner.heading;
         return (
