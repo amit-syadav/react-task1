@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import CardColumns from "react-bootstrap/CardColumns";
 import Button from "react-bootstrap/Button";
-// import "./press.css";
+import Image from "react-bootstrap/Image";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "./press.module.scss";
 import uniqid from "uniqid";
@@ -39,32 +39,40 @@ const Press = () => {
       var imageUrl = pressObject[key]["file"].url;
       var link = pressObject[key]["link"].href;
       pressDetails.push(
-        <Card
-          key={uniqid()}
-          className={
-            "d-flex flex-row justify-content-center align-items-center"
-          }
-        >
-          <Card.Img
-            variant="top"
-            src={imageUrl}
-            className={styles["image-resize"] + " img-thumbnail"}
-          />
-          <Card.Body
-            style={{ width: "28rem" }}
-            className={"flex-fill  d-flex flex-column  justify-content-center"}
-          >
-            <Card.Title>{heading}</Card.Title>
-            <Card.Subtitle id="s1" className={"mb-2 text-muted"}>
-              {author}
-            </Card.Subtitle>
-            <Card.Subtitle id=" s2" className={"mb-2 text-muted"}>
-              {date}
-            </Card.Subtitle>
-            <Button variant="primary" href={link}>
-              Learn more
-            </Button>
-          </Card.Body>
+        <Card>
+          <div key={uniqid()} className={styles["card-outer-item-flex"]}>
+            {/* <Image src={imageUrl} thumbnail fluid /> */}
+            <Card.Img
+              variant="top"
+              src={imageUrl}
+              className={styles["image-style"]}
+            />
+            <Card.Body className={styles["card-body--flex"]}>
+              <Card.Title className={styles["card-item--flex"]}>
+                {heading}
+              </Card.Title>
+              <Card.Subtitle
+                id="s1"
+                className={styles["card-item--flex"] + " mb-2 text-muted"}
+              >
+                {author}
+              </Card.Subtitle>
+              <Card.Subtitle
+                id=" s2"
+                className={styles["card-item--flex"] + " mb-2 text-muted"}
+              >
+                {date}
+              </Card.Subtitle>
+              <Button
+                variant="primary"
+                id={styles["button-style"]}
+                className={styles["card-item--flex"]}
+                href={link}
+              >
+                Learn more
+              </Button>
+            </Card.Body>
+          </div>
         </Card>
       );
     }
@@ -79,12 +87,12 @@ const Press = () => {
             <React.Fragment key={uniqid()}>
               <div key={uniqid}>
                 <hr style={{ borderTop: "2px solid red", width: "10%" }} />
-                <h1 style={{ textAlign: "center" }}>Press</h1>
+                <h1 className={styles["heading-style"]}>Press</h1>
               </div>{" "}
             </React.Fragment>
           );
         })}
-        <CardColumns className={"d-flex flex-column"}>
+        <CardColumns className={styles["card-container-style"]}>
           {pressDetails}
         </CardColumns>
       </Container>

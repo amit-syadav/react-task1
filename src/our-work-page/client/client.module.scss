@@ -1,43 +1,44 @@
+@import "set";
+
+@mixin flex-styling($flow) {
+  display: flex;
+  flex-flow: $flow wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+
 .heading-style {
   font-weight: bold;
-  color: #2d2d2d;
+  color: $primaryColor;
   text-align: center;
   margin-top: 1em;
 }
 
 .p-style {
-  color: #2d2d2d;
+  color: $primaryColor;
   text-align: center;
   margin-bottom: 1em;
 }
 
 .card-container-style {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  align-items: center;
-  align-content: center;
+  @include flex-styling(row);
+}
+
+.card-body--flex {
+  @include flex-styling(column);
 }
 
 .card-item-style {
   flex-basis: 80%;
-}
-.card-item-style * {
   align-self: center;
   text-transform: capitalize;
 }
 
-.card-body--flex {
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: space-around;
-  align-items: center;
-  align-content: center;
-}
-
-.card-item--flex {
-  flex-basis: 100%;
-  width: 100%;
+#button-style {
+  width: auto;
+  text-align: center;
+  margin: 0;
 }
 
 #s1,

@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 import CardColumns from "react-bootstrap/CardColumns";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import styles from "./client.module.css";
+import styles from "./client.module.scss";
 import uniqid from "uniqid";
 
 const Client = () => {
@@ -60,6 +60,7 @@ const Client = () => {
             </Card.Subtitle>
             <Button
               className={styles["card-item--flex"]}
+              id={styles["button-style"]}
               variant="primary"
               href={link}
             >
@@ -79,8 +80,7 @@ const Client = () => {
           return (
             <React.Fragment key={uniqid()}>
               <div className={styles["title-text"]}>
-                <hr style={{borderTop: "2px solid red",
-  width:"10%"}}/>
+                <hr style={{ borderTop: "2px solid red", width: "10%" }} />
                 <h1 className={styles["heading-style"]}>
                   {item.entry.heading}
                 </h1>
